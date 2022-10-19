@@ -1,0 +1,10 @@
+stage:
+  icon: ico.png
+  title: "  工具箱"
+  rootFxml: root
+  mainCss: tools.css
+  resizable: false
+
+
+nefure-scanner-base-package:
+  org.nefure.tools.controller,org.nefure.tools.service

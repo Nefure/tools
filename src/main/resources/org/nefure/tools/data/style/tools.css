@@ -1,0 +1,22 @@
+.btn-info {
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-background-color: #5bc0de;
+    -fx-border-radius: 10%;
+    -fx-border-color: #46b8da; }
+.btn-info:hover {
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-translate-y: -1;
+    -fx-background-color: #5BC0DE96;
+    -fx-border-color: #5BC0DE96; }
+.btn-info:pressed{
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-background-color: #31b0d5;
+    -fx-border-color: #269abc; }
+.btn-info:pressed:hover, .btn-info:pressed:focused, .btn-info:pressed.focused, .btn-info.pressed:hover, .btn-info.pressed:focused, .btn-info.pressed.focused{
+    -fx-text-fill: #fff;
+    -fx-fill: #fff;
+    -fx-background-color: #269abc;
+    -fx-border-color: #1b6d85; }

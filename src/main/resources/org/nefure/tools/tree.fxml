@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1132.0" style="-fx-background-color: white;" stylesheets="@data/style/tools.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nefure.tools.controller.TreeController">
+   <children>
+      <Button layoutX="1.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#toLastPage" styleClass="btn-info" text="&lt;&lt;返回" />
+      <Button layoutX="904.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#add" styleClass="btn-info" text="add" />
+      <Canvas fx:id="canvas" focusTraversable="true" height="707.0" layoutX="12.0" layoutY="83.0" onMouseClicked="#move" width="1110.0" />
+      <Spinner fx:id="input" editable="true" initialValue="1" layoutX="688.0" layoutY="51.0" max="1001" min="1" opacity="0.51">
+              <editable>true</editable>
+      </Spinner>
+      <Button layoutX="977.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#del" styleClass="btn-info" text="del" />
+      <Button layoutX="1047.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#addRandom" styleClass="btn-info" text="random" />
+   </children>
+</AnchorPane>
