@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1132.0" styleClass="pane" stylesheets="@data/style/tools.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nefure.tools.controller.CrudBuilderController">
+   <children>
+      <AnchorPane layoutX="25.0" layoutY="6.0" prefHeight="87.0" prefWidth="1083.0">
+         <children>
+            <Label layoutX="17.0" layoutY="16.0" text="url：" />
+            <TextField fx:id="urlInput" layoutX="55.0" layoutY="12.0" prefHeight="23.0" prefWidth="214.0" text="jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/jiangxinongda?useSSL=false&amp;serverTimezone=UTC" />
+            <Label layoutX="282.0" layoutY="16.0" text="用户账号：" />
+            <TextField fx:id="userNameInput" layoutX="351.0" layoutY="12.0" prefHeight="23.0" prefWidth="161.0" text="student" />
+            <Label layoutX="542.0" layoutY="16.0" text="密码：" />
+            <PasswordField fx:id="passwordInput" layoutX="584.0" layoutY="12.0" prefHeight="23.0" prefWidth="161.0" text="521qianfeng" />
+            <Label layoutX="781.0" layoutY="59.0" text="表：" />
+            <ComboBox fx:id="tableSelect" layoutX="805.0" layoutY="54.0" prefHeight="23.0" prefWidth="102.0" />
+            <Label layoutX="530.0" layoutY="58.0" text="实体类：" />
+            <TextField fx:id="simpleClassNameInput" layoutX="584.0" layoutY="55.0" prefHeight="23.0" prefWidth="161.0" promptText="不加包名.." />
+            <Button layoutX="945.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#build" prefHeight="33.0" prefWidth="109.0" styleClass="btn-info" text="生成基础代码" />
+            <TextField fx:id="targetDicInput" layoutX="351.0" layoutY="55.0" prefHeight="23.0" prefWidth="161.0" text="E:\temp" />
+            <Label layoutX="282.0" layoutY="58.0" text="目标目录：" />
+            <Label layoutX="9.0" layoutY="59.0" text="前缀：" />
+            <TextField fx:id="prefixInput" layoutX="55.0" layoutY="54.0" prefHeight="23.0" prefWidth="214.0" promptText="org.nefure.test" text="org.nefure.test" />
+            <Button layoutX="805.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#connect" styleClass="btn-info" text="连接目标数据库" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="25.0" layoutY="123.0" prefHeight="642.0" styleClass="pane">
+         <children>
+            <Pane prefHeight="42.0" prefWidth="1081.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="96.0" layoutY="7.0" prefHeight="25.0" prefWidth="118.0" text="字段名" textAlignment="JUSTIFY" />
+                  <Label alignment="CENTER" layoutX="429.0" layoutY="7.0" prefHeight="25.0" prefWidth="72.0" text="字段类型" />
+                  <Label alignment="CENTER" layoutX="724.0" layoutY="8.0" prefHeight="23.0" prefWidth="102.0" text="对应Java类型" />
+                  <Label layoutX="908.0" layoutY="12.0" text="是否忽略此字段" />
+               </children>
+            </Pane>
+            <ScrollPane focusTraversable="false" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="595.0" prefWidth="1083.0" styleClass="pane">
+               <content>
+                  <VBox fx:id="fieldBox" layoutY="42.0" prefHeight="591.0" prefWidth="1079.0" styleClass="pane">
+                     <children>
+                        <FlowPane prefHeight="33.0" prefWidth="1081.0" styleClass="item" visible="false">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="310.0" text="..." />
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="310.0" text="..." />
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="310.0" text="..." />
+                              <CheckBox mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="隐藏" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

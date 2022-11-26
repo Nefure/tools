@@ -25,4 +25,9 @@ public class RootController{
         stage.setScene(tree);
     }
 
+    public void openCrudBuilder(){
+        Scene crudBuilder = factory.getScene("crudBuilder");
+        stage.setScene(crudBuilder);
+    }
+
 }

@@ -14,11 +14,14 @@
         <maven.deploy.skip>true</maven.deploy.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <cglib-version>3.3.0</cglib-version>
+        <druid-version>1.2.14</druid-version>
         <junit-version>5.9.0</junit-version>
         <lombok-version>1.18.24</lombok-version>
+        <mybatis-version>3.5.11</mybatis-version>
+        <mysql-conn-vesion>8.0.30</mysql-conn-vesion>
         <slf4j-version>2.0.3</slf4j-version>
         <yml-version>1.33</yml-version>
-        <cglib-version>3.3.0</cglib-version>
     </properties>
 
     <dependencies>
@@ -29,13 +32,27 @@
             <artifactId>fxscaffold</artifactId>
             <version>1.0-ALPHA</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-conn-vesion}</version>
+        </dependency>
+
+        <!--    测试工具    -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

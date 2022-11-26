@@ -9,6 +9,7 @@ import org.nefure.tools.view.MainMenu;
 public class Main{
 
     public static void main(String[] args) {
+
         ApplicationContext.run(MainMenu.class, args);
     }
 

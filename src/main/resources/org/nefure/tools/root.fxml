@@ -18,7 +18,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" styleClass="btn-info" text="未开放哦~" TilePane.alignment="BASELINE_CENTER">
+        <Button focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#openCrudBuilder" prefHeight="60.0" prefWidth="80.0" styleClass="btn-info" text="简单CRUD" TilePane.alignment="BASELINE_CENTER">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></Button>

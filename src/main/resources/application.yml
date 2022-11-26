@@ -6,5 +6,4 @@ stage:
   resizable: false
 
 
-nefure-scanner-base-package:
-  org.nefure.tools.controller,org.nefure.tools.service
+nefure-scanner-base-package: org.nefure.tools

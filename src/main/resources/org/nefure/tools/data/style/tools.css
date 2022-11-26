@@ -8,6 +8,7 @@
     -fx-text-fill: #fff;
     -fx-fill: #fff;
     -fx-translate-y: -1;
+    -fx-cursor: hand;
     -fx-background-color: #5BC0DE96;
     -fx-border-color: #5BC0DE96; }
 .btn-info:pressed{
@@ -20,3 +21,10 @@
     -fx-fill: #fff;
     -fx-background-color: #269abc;
     -fx-border-color: #1b6d85; }
+.pane{
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+}
+.item:hover{
+    -fx-background-color: rgba(64, 158, 255, 0.25);
+}
