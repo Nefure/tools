@@ -91,6 +91,7 @@ public class CrudBuilderService {
                         append("    String TABLE_NAME = \"`").append(table.getTableName()).append("`\";\n\n");
 
                 // insertOne
+                builder.append("    /**\n     * 添加一条记录\n     * @param item 要添加的记录\n     */");
                 builder.append("    @Options(useGeneratedKeys=true, keyProperty=\"id\", keyColumn=\"id\")\n").
                         append("    @Insert(").
                         append("\"<script>INSERT INTO \" + TABLE_NAME + \" VALUE (");
@@ -101,6 +102,7 @@ public class CrudBuilderService {
                 builder.append("    void insert(").append(simpleClassName).append(" item);\n\n");
 
                 //insertAll
+                builder.append("    /**\n     * 批量添加记录\n     * @param items 要添加的记录集合\n     */\n");
                 builder.append("    @Insert(");
                 builder.append("\"<script><foreach collection='list' item='item' open=' INSERT INTO \" + TABLE_NAME + \" VALUE' separator=','>(");
                 //         #{item.key},#{item.value},,
@@ -109,10 +111,12 @@ public class CrudBuilderService {
                 builder.append("    void insert(List<").append(simpleClassName).append("> items);\n\n");
 
                 //deleteById
+                builder.append("    /**\n     * 根据id删除一条记录\n     * @param id 主键\n     */\n");
                 builder.append("    @Delete(\"DELETE FROM \"+TABLE_NAME+\" WHERE `id`=#{id}\")\n").
                         append("    void delete(Serializable id);\n\n");
 
                 //updateById
+                builder.append("    /**\n     * 根据id更新记录\n     * @param item 需要更新的记录信息\n     * @return 影响行数\n     */\n");
                 builder.append("    @Update(\"UPDATE \"+TABLE_NAME+\" <set>");
                   //填充set条件
                 for (Table.Column column : table.getColumns()) {
@@ -125,6 +129,7 @@ public class CrudBuilderService {
                 builder.append("    int updateById(").append(simpleClassName).append(" item);\n\n");
 
                 //selectById
+                builder.append("    /**\n     * 根据id查询记录\n     * @param id 主键\n     * @return 记录封装类\n     */\n");
                 builder.append("    @Select(\"SELECT ");
                 for (Table.Column column : table.getColumns()) {
                     if (!column.getIgnored()){
