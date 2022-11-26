@@ -96,7 +96,7 @@ public class CrudBuilderService {
                         append("    @Insert(").
                         append("\"<script>INSERT INTO \" + TABLE_NAME + \" VALUE (");
 
-                appendFields(builder,table.getColumns());
+                appendFields(builder,table.getColumns(),false);
 
                 builder.append(")</script>\")\n");
                 builder.append("    void insert(").append(simpleClassName).append(" item);\n\n");
@@ -105,10 +105,10 @@ public class CrudBuilderService {
                 builder.append("    /**\n     * 批量添加记录\n     * @param items 要添加的记录集合\n     */\n");
                 builder.append("    @Insert(");
                 builder.append("\"<script><foreach collection='list' item='item' open=' INSERT INTO \" + TABLE_NAME + \" VALUE' separator=','>(");
-                //         #{item.key},#{item.value},,
-                appendFields(builder,table.getColumns());
+                //         #{key},#{value},,
+                appendFields(builder,table.getColumns(),true);
                 builder.append(")</foreach></script>\")\n");
-                builder.append("    void insert(List<").append(simpleClassName).append("> items);\n\n");
+                builder.append("    void insertAll(List<").append(simpleClassName).append("> items);\n\n");
 
                 //deleteById
                 builder.append("    /**\n     * 根据id删除一条记录\n     * @param id 主键\n     */\n");
@@ -117,15 +117,19 @@ public class CrudBuilderService {
 
                 //updateById
                 builder.append("    /**\n     * 根据id更新记录\n     * @param item 需要更新的记录信息\n     * @return 影响行数\n     */\n");
-                builder.append("    @Update(\"UPDATE \"+TABLE_NAME+\" <set>");
+                builder.append("    @Update(\"<script>UPDATE \"+TABLE_NAME+\" <set>");
                   //填充set条件
                 for (Table.Column column : table.getColumns()) {
+                    if ("update_time".equals(column.getName())){
+                        builder.append("update_time = NOW(),");
+                        continue;
+                    }
                     String fieldName = StringUtils.smallHump(column.getName());
-                    builder.append("<if test='item.").append(fieldName).append("!=null'>`").
-                            append(column.getName()).append("`=#{item.").append(fieldName).
+                    builder.append("<if test='").append(fieldName).append("!=null'>`").
+                            append(column.getName()).append("`=#{").append(fieldName).
                             append("},</if>");
                 }
-                builder.append("</set> WHERE `id` = #{item.id}\")\n");
+                builder.append("</set> WHERE `id` = #{id}</script>\")\n");
                 builder.append("    int updateById(").append(simpleClassName).append(" item);\n\n");
 
                 //selectById
@@ -148,15 +152,22 @@ public class CrudBuilderService {
         }
     }
 
-    private void appendFields(StringBuilder builder, List<Table.Column> columns){
+    private void appendFields(StringBuilder builder, List<Table.Column> columns,boolean isBath){
         for (Table.Column column : columns) {
             String fieldName = StringUtils.smallHump(column.getName());
             if (column.getIgnored()){
                 builder.append("DEFAULT,");
             }
             else {
-                builder.append("<choose><when test='item.").
-                        append(fieldName).append(" != null'>#{item.").append(fieldName).
+                builder.append("<choose><when test='");
+                if (isBath){
+                    builder.append("item.");
+                }
+                builder.append(fieldName).append(" != null'>#{");
+                if (isBath){
+                    builder.append("item.");
+                }
+                builder.append(fieldName).
                         append("}</when><otherwise> DEFAULT </otherwise></choose>,");
             }
         }

@@ -192,6 +192,7 @@ public class CrudBuilderController {
         }else {
             buildChecked();
         }
+        Thread.sleep(3000);
     }
 
     private void buildChecked() throws IOException {
