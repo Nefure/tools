@@ -8,9 +8,9 @@
       <AnchorPane layoutX="25.0" layoutY="6.0" prefHeight="87.0" prefWidth="1083.0">
          <children>
             <Label layoutX="17.0" layoutY="16.0" text="url：" />
-            <TextField fx:id="urlInput" layoutX="55.0" layoutY="12.0" prefHeight="23.0" prefWidth="214.0" text="jdbc:mysql://cdb-kthncrwi.bj.tencentcdb.com:10159/jiangxinongda?useSSL=false&amp;serverTimezone=UTC" />
+            <TextField fx:id="urlInput" layoutX="55.0" layoutY="12.0" prefHeight="23.0" prefWidth="214.0" />
             <Label layoutX="282.0" layoutY="16.0" text="用户账号：" />
-            <TextField fx:id="userNameInput" layoutX="351.0" layoutY="12.0" prefHeight="23.0" prefWidth="161.0" text="student" />
+            <TextField fx:id="userNameInput" layoutX="351.0" layoutY="12.0" prefHeight="23.0" prefWidth="161.0" text="root" />
             <Label layoutX="542.0" layoutY="16.0" text="密码：" />
             <PasswordField fx:id="passwordInput" layoutX="584.0" layoutY="12.0" prefHeight="23.0" prefWidth="161.0" text="521qianfeng" />
             <Label layoutX="781.0" layoutY="59.0" text="表：" />
