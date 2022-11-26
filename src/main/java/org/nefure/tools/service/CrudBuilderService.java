@@ -91,7 +91,7 @@ public class CrudBuilderService {
                         append("    String TABLE_NAME = \"`").append(table.getTableName()).append("`\";\n\n");
 
                 // insertOne
-                builder.append("    /**\n     * 添加一条记录\n     * @param item 要添加的记录\n     */");
+                builder.append("    /**\n     * 添加一条记录\n     * @param item 要添加的记录\n     */\n");
                 builder.append("    @Options(useGeneratedKeys=true, keyProperty=\"id\", keyColumn=\"id\")\n").
                         append("    @Insert(").
                         append("\"<script>INSERT INTO \" + TABLE_NAME + \" VALUE (");

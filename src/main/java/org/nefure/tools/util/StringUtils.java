@@ -24,4 +24,8 @@ public class StringUtils {
         return builder.toString();
     }
 
+    public static String bigHump(String str){
+        return smallHump("_"+str);
+    }
+
 }

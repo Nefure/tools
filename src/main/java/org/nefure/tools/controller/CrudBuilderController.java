@@ -1,6 +1,5 @@
 package org.nefure.tools.controller;
 
-import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.scene.Node;
@@ -12,7 +11,9 @@ import org.nefure.fxscaffold.annotion.Resource;
 import org.nefure.tools.dao.TableDao;
 import org.nefure.tools.entity.Table;
 import org.nefure.tools.service.CrudBuilderService;
+import org.nefure.tools.util.StringUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class CrudBuilderController {
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     public VBox fieldBox;
+    public CheckBox tablePrefix;
+    public CheckBox buildAll;
 
     private String url;
     private String userName;
@@ -43,8 +46,6 @@ public class CrudBuilderController {
 
     private final List<Table> tables = new ArrayList<>();
     private Table table;
-
-    private ChangeListener<Boolean> listener;
 
     @Resource
     private final TableDao tableDao = new TableDao();
@@ -106,8 +107,17 @@ public class CrudBuilderController {
             table = tables.get(newValue.intValue());
             tableDao.selectAllColumns(url, userName, passwd, table);
             loadTableDetails();
+            simpleClassNameInput.setText(getEntityNameFromTableName(table));
         });
         isInit = true;
+    }
+
+    private String getEntityNameFromTableName(Table table) {
+        String tableName = table.getTableName();
+        if (tablePrefix.isSelected()){
+            tableName = tableName.substring(tableName.indexOf('_') +1);
+        }
+        return  StringUtils.bigHump(tableName);
     }
 
     private void loadTableDetails() {
@@ -177,6 +187,21 @@ public class CrudBuilderController {
     }
 
     public void build() throws Exception {
+        if (buildAll.isSelected()){
+            buildAll();
+        }else {
+            buildChecked();
+        }
+    }
+
+    private void buildChecked() throws IOException {
         crudBuilderService.build(table, prefixInput.getText(), simpleClassNameInput.getText(), targetDicInput.getText());
+    }
+
+    public void buildAll() throws IOException {
+        for (Table tab : tables) {
+            tableDao.selectAllColumns(url,userName,passwd,tab);
+            crudBuilderService.build(tab, prefixInput.getText(), getEntityNameFromTableName(tab), targetDicInput.getText());
+        }
     }
 }
