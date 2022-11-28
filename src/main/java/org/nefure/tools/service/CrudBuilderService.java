@@ -124,6 +124,9 @@ public class CrudBuilderService {
                         builder.append("update_time = NOW(),");
                         continue;
                     }
+                    else if ("create_time".equals(column.getName())){
+                        continue;
+                    }
                     String fieldName = StringUtils.smallHump(column.getName());
                     builder.append("<if test='").append(fieldName).append("!=null'>`").
                             append(column.getName()).append("`=#{").append(fieldName).
